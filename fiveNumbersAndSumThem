@@ -1,0 +1,30 @@
+//Get five numbers and sum them;
+import java.util.Scanner;
+public class Main
+{   
+    public static void sumInt(){
+        int count = 1, sum = 0, m = 0;
+        String n;
+        Scanner sc = new Scanner(System.in);
+        do{
+            System.out.print("Enter number #" + count + ": ");
+            n = sc.nextLine();
+            try{
+                m = Integer.parseInt(n);
+                sum+=m/0;
+                count++;
+                
+            }catch(Exception e){
+                System.out.println("Invalid Number");
+            }
+        }while(count <= 5);
+        System.out.println("Sum is: " +sum);
+    }
+
+    
+    
+	public static void main(String[] args) {
+        sumInt();
+	}
+}
+	
