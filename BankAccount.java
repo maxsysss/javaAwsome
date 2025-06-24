@@ -1,5 +1,4 @@
-package account;
-
+//package account;
 public class Main
 {  
 
@@ -10,15 +9,15 @@ public class Main
         bc.setEmail("EEEEE");
         bc.setPhoneNo("PPPPPP");
         bc.deposit(1000000);
-        bc.withdraw(1000001);
+        bc.withdraw(9999);
         System.out.println(bc);
-        
 	}
 }
 	
 
+	
 
-package account;
+//package account;
 class BankAccount{
     private String accNumber;
     private double balance;
@@ -40,12 +39,14 @@ class BankAccount{
     }
     public void deposit(double amount){
         balance += amount;
+        System.out.println("Deposit: $" + balance);
     }
     public void withdraw(double amount){
         if(this.balance - amount <= 0){
             System.out.println("No suficient funds to withdraw");
         }else{
-            System.out.println("You withdraw: $" + (balance - amount));
+            balance -= amount;
+            System.out.println("You withdraw: $" + amount + "has left $" + balance);
         }
     }
     public String toString(){
