@@ -1,4 +1,24 @@
 package account;
+
+public class Main
+{  
+
+	public static void main(String[] args) {
+        BankAccount bc = new BankAccount();
+        bc.setAccNumber("AAAAA");
+        bc.setCustName("BBBBB");
+        bc.setEmail("EEEEE");
+        bc.setPhoneNo("PPPPPP");
+        bc.deposit(1000000);
+        bc.withdraw(1000001);
+        System.out.println(bc);
+        
+	}
+}
+	
+
+
+package account;
 class BankAccount{
     private String accNumber;
     private double balance;
