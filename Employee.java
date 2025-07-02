@@ -1,3 +1,20 @@
+public class Main
+{  
+
+	public static void main(String[] args) {
+        Employee e1 = new Employee("AAAAA", "01/01/1983", "31/12/2000");
+        System.out.println("Age: "+e1.getAge());
+        System.out.println("Pay: "+e1.collectPay());
+        System.out.println(e1);
+        
+        Employee e2 = new Employee("BBBBB", "01/01/1921", "01/01/2001");
+        System.out.println(e2);
+        
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
 
 class Worker{
     private String name, birthDate;
@@ -5,14 +22,14 @@ class Worker{
     
     public Worker(){}
     
-    public Worker(String n, String b, String e){
+    public Worker(String n, String b){
         name = n;
         birthDate = b;
     }
     
     public int getAge(){
         int currentYear = 2025;
-        birthYear = Integer.parseInt(birthDate.substring(6))
+        int birthYear = Integer.parseInt(birthDate.substring(6));
         return currentYear-birthYear;
     }
     //To overwriten
@@ -29,10 +46,22 @@ class Worker{
 }
 ///////////////////////////////////////////////////////////////////////////////
 class Employee extends Worker{
-    private long employeeld;
+    private long employeeId;
     private String hireDate;
+    private static int employeeNo = 1;
+    
+    public Employee(){}
+    
+    public Employee(String n, String b, String h){
+        super(n,b);
+        employeeId = Employee.employeeNo++;
+        hireDate = h;
+    }
+    
+    public String toString(){
+        return "/Employee/\n"+"Employee Id:"+employeeId+"\nHire date: "+hireDate+"\nSuper tostring()\n" + super.toString();
+    }
 }
-
 ///////////////////////////////////////////////////////////////////////////////
 
 class SalariedEmployee extends Employee{
