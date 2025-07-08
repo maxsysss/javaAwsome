@@ -16,10 +16,18 @@ class CoffeeMaker extends iotDevice{
         super(b)
     }
     public void brewCoffee(){
-        System.out.println("Start to brew coffee!");
+        if coffeemaker.hasWorkToDo){
+            System.out.println("Start to brew coffee!");
+        }else{
+            System.out.println("The coffe maker has not started!");
+        }
     }
     public void addWater(){
-        System.out.println("Adding water!");
+        if(coffeemaker.hasWorkToDo){
+            System.out.println("Adding water!");
+        }else{
+            System.out.println("The coffe maker has not started!");
+        }
     }
 }
 
@@ -28,7 +36,11 @@ class DishWasher extends iotDevice{
         super(b);
     }
     public void doDishes(){
-        System.out.println("Starting dishes wash!");
+        if (dishWasher.hasWorkToDo){
+            System.out.println("Starting dishes wash!");
+        }else{
+            System.out.println("The dish washer has not started!");
+        }
     }
 }
 
@@ -39,7 +51,11 @@ class Refrigerator extends iotDevice{
     }
     
     public void orderFood(){
-        System.out.println("Ordering foood!");
+        if (this.hasWorkToDo){
+            System.out.println("Ordering foood!");
+        }else{
+            System.out.println("The refrigerator has not started!");
+        }
     }
 }
 
@@ -83,4 +99,3 @@ public class Main
 		
 	}
 }
-
