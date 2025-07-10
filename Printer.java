@@ -3,42 +3,58 @@ class Printer{
     private int pagesPrinted;
     private boolean duplex;
     
-    public Printer(int t, int p, boolean d){
-        tonerLevel = t;
-        pagesPrinted = p;
-        duplex = d
+    public Printer(){
+        tonerLevel=100;
+        pagesPrinted=0;
+        duplex=false;
+    }
+    public Printer(boolean duplex){
+        tonerLevel=100;
+        pagesPrinted=0;
+        this.duplex=duplex;
     }
     
-    public void getTonerLevel(){
-        System.out.println("Toner Level: " + tonerLevel + "%");
+    public Printer(int t, boolean d){
+        tonerLevel=(t>=0&&t<=100)?t:-1;
+        pagesPrinted = 0;
+        duplex = d;
     }
-    public void getPagesPrinted(){
-        System.out.println("Pages printed: "+pagesPrinted+" pages");
+    
+    public int getTonerLevel(){
+        //System.out.println("Toner Level: " + tonerLevel + "%");
+        return tonerLevel;
+    }
+    public int getPagesPrinted(){
+        //System.out.println("Pages printed: "+pagesPrinted+" pages");
+        return pagesPrinted;
     }
     
     public int addToner(int tonerAmount){
-        tonerLevel+= tonerAmount;
-        if(tonerLevel>100){
-            tonerLevel=100;
-        }else if(tonerLevel<0){
-            tonerLevel=0;
+       int tempAmount = tonerLevel + tonerAmount;
+        if(tempAmount>100 || tempAmount<0){
+            return -1;
         }
+        tonerLevel+=tonerAmount;
+
         return tonerLevel;
     }
     public int printPages(int pages){
-        if (duplex){
-            pagesPrinted+=pages/2;
-        }else{
-            pagesPrinted+=pages;
-        }
-        return pagesPrinted
+        int jobPages=(duplex) ? (pages/2)+(pages%2):pages;
+        pagesPrinted += jobPages;
+        return jobPages;
     }
 }
 
 public class Main
 {
 	public static void main(String[] args) {
-
+        Printer p = new Printer(50,true);
+        System.out.println("initial page count = " + p.getPagesPrinted());
+        
+        int pagesPrinted = p.printPages(5);
+        System.out.printf("Current Job Pages: %d, Printer Total: %d %n", pagesPrinted, p.getPagesPrinted());
+        
+        pagesPrinted = p.printPages(10);
+        System.out.printf("Current Job Pages: %d, Printer Total: %d %n", pagesPrinted, p.getPagesPrinted());
 	}
 }
-
